@@ -1080,9 +1080,13 @@ section {
 
 .contact-card p {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
+    font-size: 0.7rem;
     color: var(--text-secondary);
-    word-break: break-word;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
 }
 
 /* ==========================================
@@ -1180,6 +1184,12 @@ section {
     
     .contact-methods {
         grid-template-columns: 1fr;
+    }
+    
+    .contact-card p {
+        font-size: 0.65rem;
+        white-space: normal;
+        word-break: break-all;
     }
     
     .leadership-logo {
