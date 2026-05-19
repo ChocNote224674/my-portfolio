@@ -225,11 +225,19 @@ window.RESUME = {
 // === LaTeX source builders ===
 function escTex(s) {
   if (!s) return "";
-  return String(s)
-    .replace(/\\/g, "\\textbackslash{}")
+  // Use placeholder chars (private-use Unicode) so escaping special chars doesn't
+  // also break LaTeX commands we generate (e.g. \textbackslash{} contains {}).
+  const PH_BACK = "\u0001"; // backslash placeholder
+  const PH_TILDE = "\u0002"; // tilde placeholder
+  const PH_CARET = "\u0003"; // caret placeholder
+  let out = String(s)
+    .replace(/\\/g, PH_BACK)
+    .replace(/~/g, PH_TILDE)
+    .replace(/\^/g, PH_CARET)
     .replace(/([&%$#_{}])/g, "\\$1")
-    .replace(/~/g, "\\textasciitilde{}")
-    .replace(/\^/g, "\\textasciicircum{}")
+    .replace(new RegExp(PH_BACK, "g"), "\\textbackslash{}")
+    .replace(new RegExp(PH_TILDE, "g"), "\\textasciitilde{}")
+    .replace(new RegExp(PH_CARET, "g"), "\\textasciicircum{}")
     .replace(/—/g, "---")
     .replace(/–/g, "--")
     .replace(/·/g, "$\\cdot$")
@@ -239,7 +247,10 @@ function escTex(s) {
     .replace(/ô/g, "\\^o").replace(/ö/g, '\\"o')
     .replace(/ù/g, "\\`u").replace(/û/g, "\\^u").replace(/ü/g, '\\"u')
     .replace(/ç/g, "\\c{c}")
-    .replace(/É/g, "\\'E");
+    .replace(/É/g, "\\'E")
+    .replace(/œ/g, "\\oe{}").replace(/Œ/g, "\\OE{}")
+    .replace(/→/g, "$\\to$").replace(/←/g, "$\\leftarrow$");
+  return out;
 }
 
 window.buildTex = function(lang) {

@@ -2,20 +2,19 @@
 
 window.GAME = {
   // World dimensions
-  worldWidth: 7200,
+  worldWidth: 5600,
   groundY: 480,         // ground line from top of game viewport (700 tall)
 
   // Stations correspond 1:1 with milestones in CONTENT.<lang>.journey.milestones
+  // (after the journey was split into academic + work — 7 milestones total)
   stations: [
     { idx: 0, x:  500, kind: "academy",   color: "#a89b6b", icon: "≡", subtitle: "BAC" },
     { idx: 1, x: 1200, kind: "academy",   color: "#5a7c8a", icon: "∫", subtitle: "LICENCE · MATH" },
-    { idx: 2, x: 1900, kind: "lab",       color: "#7a6b9c", icon: "{ }", subtitle: "IT LAB · FOUNDED" },
-    { idx: 3, x: 2700, kind: "academy",   color: "#5a8a7a", icon: "∇", subtitle: "M.SC. DS & AI" },
-    { idx: 4, x: 3500, kind: "research",  color: "#9c7a6b", icon: "λ", subtitle: "CYBER RESEARCH" },
-    { idx: 5, x: 4300, kind: "voice",     color: "#6b9c8a", icon: "♪", subtitle: "VOICE AGENT" },
-    { idx: 6, x: 5000, kind: "trophy",    color: "#bfa05a", icon: "★", subtitle: "BEST PITCH" },
-    { idx: 7, x: 5800, kind: "rag",       color: "#6b8a9c", icon: "Σ", subtitle: "RAG + CAG" },
-    { idx: 8, x: 6700, kind: "techlab",   color: "#8a6b9c", icon: "◈", subtitle: "TECH LAB" },
+    { idx: 2, x: 1900, kind: "academy",   color: "#5a8a7a", icon: "∇", subtitle: "M.SC. DS & AI" },
+    { idx: 3, x: 2700, kind: "research",  color: "#9c7a6b", icon: "λ", subtitle: "CYBER RESEARCH" },
+    { idx: 4, x: 3400, kind: "voice",     color: "#6b9c8a", icon: "♪", subtitle: "VOICE AGENT" },
+    { idx: 5, x: 4200, kind: "rag",       color: "#6b8a9c", icon: "Σ", subtitle: "RAG + CAG" },
+    { idx: 6, x: 5000, kind: "techlab",   color: "#8a6b9c", icon: "◈", subtitle: "TECH LAB" },
   ],
 
   // Floating background symbols (math / AI flavour)
